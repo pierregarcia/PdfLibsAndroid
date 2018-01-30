@@ -20,10 +20,6 @@ namespace PdfForms.iOS.Renderers
             {
                 SetNativeControl(new UIWebView());
             }
-            if (e.OldElement != null)
-            {
-                // Cleanup
-            }
             if (e.NewElement != null)
             {
                 LoadPdf();
@@ -44,8 +40,7 @@ namespace PdfForms.iOS.Renderers
             {
                 return;
             }
-            string fileName = Path.Combine(NSBundle.MainBundle.BundlePath, string.Format("Content/{0}", WebUtility.UrlEncode(Element.PdfPath)));
-            Control.LoadRequest(new NSUrlRequest(new NSUrl(fileName, false)));
+            Control.LoadRequest(new NSUrlRequest(new NSUrl(Element.PdfPath, false)));
             Control.ScalesPageToFit = true;
         }
     }
